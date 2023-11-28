@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <h1 class="my-4 text-center">Liste des réservations</h1>
+
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th class="c-black" scope="col">Nom Produit</th>
+          <th class="c-black" scope="col">Nom</th>
+          <th class="c-black" scope="col">Prénom</th>
+          <th class="c-black respphone" scope="col">Email</th>
+          <th class="c-black respphone" scope="col">Téléphone</th>
+
+            <th class="c-black" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        {% for reservation in reservations %}
+          <tr>
+            <td class="c-black">{{ reservation.nproduit }}</td>
+            <td class="c-black">{{ reservation.name }}</td>
+            <td class="c-black">{{ reservation.prenom }}</td>
+            <td class="c-black respphone">{{ reservation.email }}</td>
+            <td class="c-black respphone">+33 {{ reservation.tel }}</td>
+
+                  <td><a class="btn btn-warning" href="{{ path('view_reservation', {'id': reservation.id}) }}">Voir cette réservation</a>
+</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}

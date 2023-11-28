@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Calendrier des Rendez-vous
+{% endblock %}
+
+{% block body %}
+
+  <div class="container card">
+    <br>
+    <div class="roww">
+      <a class="btn btn-primary btn-sm w-100" href="{{ path('home') }}">Page d'accueil</a>
+      <br>
+      <a class="col-6 btn btn-warning btn-sm w-100" href="{{ path('listerdv') }}">Liste des rendez-vous</a>
+
+    </div>
+
+
+
+    <div class="my-4" id="calendar"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $('#calendar').fullCalendar({
+                locale: 'fr', // Set the locale to French
+                events: [
+                    {% for rdv in rdvlist %}
+                        {
+                            title: '{{ rdv.famille }} {{ rdv.type }} {{ rdv.heureDebut|date('H:i:s') }} {{ rdv.heureFin|date('H:i:s') }} ',
+                            start: '{{ rdv.date|date('Y-m-d H:i:s') }}',
+                            end: '{{ rdv.heureDebut|date('Y-m-d H:i:s') }} {{ rdv.heureFin|date('Y-m-d H:i:s') }}',
+
+                        },
+                    {% endfor %}
+                ],
+            });
+        });
+    </script>
+  </div>
+
+  <br>
+
+{% endblock %}

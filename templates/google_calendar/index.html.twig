@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Calendar Events</title>
+</head>
+<body>
+    <h1>Google Calendar Events</h1>
+    <ul>
+        {% for summary in eventSummaries %}
+            <li>{{ summary }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

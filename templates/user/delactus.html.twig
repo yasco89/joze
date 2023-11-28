@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww centre">
+      <div class="col-md-6">
+        <div class=" caseparam card mb-4">
+          <div class="card-body">
+            <h5 class="card-title centre mb-3">Actus numéros : {{ actus.id }}</h5>
+
+
+              <div class="roww align-items-start">
+                <div class="centre">
+                  <img src="{{ asset(actus.images) }}" class=" w-30 card img-fluid imgiew">
+                </div>
+              <div class="col">
+                <form class="row g-3">
+                  <p class="card-text c-black capitalize">Nom de l'actualités:
+                    <span class="c-blue font20">{{ actus.name}}</span></p>
+
+                  <p class="card-text c-black capitalize">Descriptions de l'article :
+                    <span class="c-blue font20">{{ actus.article }}</span></p>
+
+                    <button type="submit" class="btn btn-warning centre" name="submit">
+                      Supprimer l'actus
+                    </button>
+                    <p class="card-text c-black capitalize">Attention cette action supprimera définitivement l'actus n °
+                      <span class="c-blue font20" >{{ actus.id }}
+                      </span>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% endblock %}

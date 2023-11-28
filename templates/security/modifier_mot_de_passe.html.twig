@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1>Modifier le mot de passe</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.ancien_mot_de_passe) }}
+        {{ form_row(form.nouveau_mot_de_passe.first) }}
+        {{ form_row(form.nouveau_mot_de_passe.second) }}
+
+        <button type="submit">Modifier</button>
+    {{ form_end(form) }}
+{% endblock %}

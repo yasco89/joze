@@ -1,0 +1,510 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+
+  <!-- // presentation des équipements -->
+  <!-- <div class=""> <img src="../images/home.jpg" class="img-fluid" alt="image de fond "> <img src="../images/home2.jpg" class=" centre img-fluid" alt="image de fond "> </div> -->
+  <div class="phone">
+    <picture>
+      <!-- For desktop -->
+      <source media="(min-width: 768px)" srcset="../images/home.jpg" class="img-fluid" alt="image de fond">
+      <!-- For mobile -->
+      <img src="../images/home2.jpg" class=" centre img-fluid" alt="image de fond">
+    </picture>
+  </div>
+
+<div class="phone">
+
+  <div class="titre_article">
+    <h2 class="bold">Nos differentes prestations:</h2>
+
+  </div>
+</div>
+  <section class="container">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <a href="homme">
+              <img src="../images/adulte.jpg" class="card-img-top" alt="..." style="max-height: 180px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Coiffure Homme</h5>
+              <p class="card-text">Découvrez des coupes masculines tendance et un service sur mesure pour chaque homme.</p>
+            </div>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+            <a href="homme" class="centre btn btn-primary my-3 ">Prendre Rendez-vous</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <a href="femme">
+
+              <img src="../images/femme.jpg" class="card-img-top" alt="..." style="max-height: 180px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Coiffure Femme</h5>
+              <p class="card-text">Laissez-vous séduire par nos coiffures féminines, du chic intemporel au dernier cri de la mode.</p>
+            </div>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+            <a href="femme" class="centre btn btn-primary my-3">Prendre Rendez-vous</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <a href="enfant">
+
+              <img src="../images/enfant.jpg" class="card-img-top" alt="..." style="max-height: 180px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Coiffure Enfant</h5>
+              <p class="card-text">Offrez à vos enfants une expérience de coiffure amusante et stylée.</p>
+            </div>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+            <a href="enfant" class="centre btn btn-primary my-3">Prendre Rendez-vous</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <a href="soins">
+
+              <img src="../images/soin.jpg" class="card-img-top" alt="..." style="max-height: 180px; object-fit: cover;">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Soins</h5>
+              <p class="card-text">Revitalisez vos cheveux avec nos soins. Des traitements nourrissants aux soins réparateurs, nous prenons soin de votre chevelure avec douceur et expertise.</p>
+            </div>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+            <a href="soins" class="centre btn btn-primary my-3">Prendre Rendez-vous</a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+
+      <p class="titre_article">Le salon J'OZE vous souhaite une excellente visite et serait ravi de vous servir - l'équipe J'OZE</p>
+
+    {% else %}
+
+    <div class="centre">
+      <a href="/" class="centre btn btn-warning">Vous devez être connecté pour accéder à nos services de rendez-vous</a>
+
+    </div>
+
+    {% endif %}
+  </section>
+
+  <div class="mt-3">
+
+    <div class="phone">
+      <picture>
+        <!-- For desktop -->
+        <source media="(min-width: 768px)" srcset="../images/produits1.jpg" class="img-fluid" alt="nos produits en vente">
+        <!-- For mobile -->
+        <img src="../images/produits2.jpg" class=" centre img-fluid" alt="nos produits en vente">
+      </picture>
+    </div>
+
+    <div class="container my-5">
+      <div class="roww">
+
+        <div class="col-md-6">
+          <img src="../images/produitvente.jpg" class="img-top" alt="Produits J'OZE" style="margin-top:13%;">
+          <img src="../images/perruque.jpg" class="img-top" alt="Produits perruque J'OZE">
+
+        </div>
+
+        <div class="col-md-6">
+          <div class="product-description">
+            <h1>Découvrez la Beauté Réinventée avec les Produits Exclusifs de J'OZE</h1>
+            <p>Bienvenue chez J'OZE, votre destination ultime pour des
+              <span class="keyword">produits de coiffure</span>
+              et de
+              <span class="keyword">soins capillaires</span>
+              de première qualité. Nos produits sont conçus spécialement pour répondre à tous vos besoins de beauté capillaire.</p>
+
+            <h2>
+              <span class="keyword">Soins Capillaires Innovants</span></h2>
+            <p>Notre gamme de
+              <span class="keyword">soins capillaires</span>, comprenant des shampoings revitalisants, des masques nourrissants et des traitements spéciaux, est enrichie d'ingrédients naturels.</p>
+
+            <h2>
+              <span class="keyword">Colorations Vibrantes et Durables</span></h2>
+            <p>Exprimez votre style unique avec notre sélection de
+              <span class="keyword">colorations capillaires</span>. Des teintes naturelles aux couleurs vives, nos produits assurent une couverture exceptionnelle.</p>
+
+            <h2>
+              <span class="keyword">Styling et Finitions Parfaites</span></h2>
+            <p>Que ce soit pour une coiffure quotidienne ou pour un événement spécial, nos produits de
+              <span class="keyword">styling</span>
+              offrent une tenue flexible et une brillance éclatante.</p>
+
+            <h2>
+              <span class="keyword">Perruques Médicales et Accessoires</span></h2>
+            <p>Spécialisés dans les solutions pour les personnes en traitement de chimiothérapie, nous offrons une vaste gamme de
+              <span class="keyword">perruques médicales</span>
+              et d'accessoires.</p>
+
+            <p>Chez J'OZE, nous nous engageons à offrir la meilleure qualité, en privilégiant des produits respectueux de votre santé et de l'environnement.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {% if is_granted('ROLE_ADMIN')or is_granted('ROLE_HOST')or is_granted('ROLE_USER') %}
+
+      <!-- Votre contenu dans le conteneur -->
+      <div class="titre_article w-100">
+        <h2 class="bold mb-3">Nos produits insolites :</h2>
+      </div>
+
+      <section class="container">
+
+
+
+            <div class="row">
+              <!-- Colonne pour la barre de recherche -->
+              <div class="col-md-6">
+                <label for="searchInput">Famille de produits :</label>
+                <input class="search form-control" id="searchInput" type="text" placeholder="Coupe : Homme , Femme, Soins ou Enfant" onkeyup="productsearch()">
+              </div>
+
+              <!-- Colonne pour la liste déroulante de filtrage par nombre de personnes -->
+              <!-- <div class="col-md-6"> <label for="filterByPerson">Prix</label> <select id="filterByPerson" class="search form-control"> <option value="0">Tous</option> <option value="1">1 personne</option> <option value="2">2 personnes</option> <option
+              value="3">3 personnes</option> <option value="4">4 personnes</option> <option value="5">5 personnes</option> <option value="6">6 personnes</option> <option value="7">7 personnes</option> <option value="8">8 personnes</option> <option value="9">9
+              personnes</option> <option value="10">10 personnes</option> </select> </div> </div> -->
+
+              <div class="col-md-6">
+                <label for="filterByPrice">Filtrer par Prix</label>
+             <select id="filterByPrice" class="search form-control" onchange="filterByPrice()">
+                <option value="all">Tous les prix</option>
+                  <option value="0-10">0€ - 10€</option>
+                  <option value="11-20">11€ - 20€</option>
+                  <option value="21-30">21€ - 30€</option>
+                  <option value="31-40">31€ - 40€</option>
+                  <option value="41-50">41€ - 50€</option>
+                  <option value="51-60">51€ - 60€</option>
+                  <option value="61-70">61€ - 70€</option>
+                  <option value="71-80">71€ - 80€</option>
+                  <option value="81-90">81€ - 90€</option>
+                  <option value="91-100">91€ - 100€</option>
+                  <option value="100+">Plus de 100€</option>
+                </select>
+              </div>
+
+          <br>
+          <div class="roww centre" id="productsContainer">
+            {% for produits in produit %}
+              <div class="col-md-3 mb-4" style="margin:10px;">
+                <div class="card-group h-100">
+                  <div class="product card ">
+                    <img src="{{ asset(produits.images) }}" class="card-img-top" alt="...">
+
+                    <div class="card-body" style="min-height: 150px;">
+                      <h5 class="card-title Capitalize" id="product">
+                        <i class="fa-solid fa-bag-shopping" style="color: #000000;"></i>
+                        Produit :
+
+                        {{ produits.name|slice(0,50) }}</h5>
+                        <p class="card-title" data-search="{{ produits.famille|slice(0,50) }}">Prestation:
+                          {{ produits.famille|slice(0,50) }}</p>
+                    </div>
+                    <div class="card-footer">
+                      {% if produits.quantite > 0 %}
+                        <div class="" data-prix="{{ produits.prix }}">
+                          <div class="">
+                            <!-- Your existing product details -->
+                            <p class="price" data-search="{{ produits.prix }}">
+                              <i class="fa-solid fa-tags" style="color: #000000;"></i>
+                              Prix :
+                              {{ produits.prix }}
+                              €</p>
+                            <!-- Other product details rendering -->
+                          </div>
+                        </div>
+                        <small class="text-body-secondary">
+                          Quantités :
+
+                          {{ produits.quantite }}</small>
+
+                        <div class="h-100">
+
+                          <a href="{{ path('view_produit', {id: produits.id}) }}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-cart-plus" style="color: #000000;"></i>
+                            Réserver</a>
+                          {% if app.user and is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('delete_produit', {id: produits.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                          {% endif %}
+                        </div>
+                      {% else %}
+                        <p class="text-body-secondary">Prochainement</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% if loop.index % 4 == 0 %}
+              </div>
+
+
+              <div class="row">
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <br>
+          <button type="button" class="Capitalize centre btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+            Se rendre à la boutique
+          </button>
+          <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Pour acceder au produits</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Veuillez vous inscrire au site J'Oze pour en beneficier d'aventage
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+                  <a href="/" class="btn btn-primary">S'identifier</a>
+                  <a href="inscription" class="btn btn-primary">S'inscrire</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endif %}
+      </div>
+    </section>
+
+    <div class=" phone my-3">
+      <picture>
+        <!-- For desktop -->
+        <source media="(min-width: 768px)" srcset="../images/FAQ.jpg" class="img-fluid" alt="qui sommes nous">
+        <!-- For mobile -->
+        <img src="../images/faq2.jpg" class=" centre img-fluid" alt="qui sommes nous">
+      </picture>
+    </div>
+
+    <div class="container mt-5">
+      <div class="row">
+
+        <div class="col">
+          <p>
+            <strong class="keyword">J'OZE :</strong>
+            Le Salon de Coiffure Spécialisé pour une Renaissance Capillaire. Expert en soins capillaires pour patients sous
+            <strong class="keyword">chimiothérapie</strong>, J'OZE offre une gamme de services uniques, notamment la pose de
+            <strong class="keyword">perruques médicales</strong>
+            sur mesure. Découvrez notre approche dédiée à restaurer la féminité et la confiance en soi chez les personnes touchées par le
+            <strong class="keyword">cancer</strong>. Profitez de notre expertise en coiffure oncologique pour retrouver votre beauté naturelle et votre assurance. Chez J'OZE, chaque coupe et chaque perruque est conçue pour célébrer votre force intérieure et redonner espoir.
+            Faites l'expérience de notre salon de coiffure pour
+            <strong class="keyword">chimiothérapie</strong>, là où la compassion, le professionnalisme et la beauté s'entremêlent.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Sécurité -->
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <img src="../images/securite.jpg" class="card-img-top" alt="Image pour la sécurité" style="object-fit: cover;">
+            <div class="card-body">
+
+              <p class="card-text">Chez J'OZE, votre sécurité est notre priorité absolue, avec des protocoles stricts et une hygiène irréprochable pour assurer une expérience sereine et sécurisée.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confort -->
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <img src="../images/confort.jpg" class="card-img-top" alt="Image pour le confort" style="object-fit: cover;">
+            <div class="card-body">
+
+              <p class="card-text">Profitez du confort ultime dans notre salon J'OZE, un espace accueillant et apaisant, conçu pour vous détendre et vous choyer pendant vos soins capillaires.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rapidité -->
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <img src="../images/rapide.jpg" class="card-img-top" alt="Image pour la rapidité" style="object-fit: cover;">
+            <div class="card-body">
+
+              <p class="card-text">J'OZE garantit une gestion efficace des rendez-vous, assurant des délais d'attente minimaux pour que vous puissiez profiter de nos services de coiffure sans délai</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Souvenir -->
+        <div class="col-md-3 mb-4">
+          <div class="card h-100">
+            <img src="../images/souvenir.jpg" class="card-img-top" alt="Image pour le souvenir" style="object-fit: cover;">
+            <div class="card-body">
+
+              <p class="card-text">Vivez une expérience de bien-être exceptionnelle chez J'OZE, où chaque soin capillaire est une étape vers votre épanouissement et le renouveau de votre image.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" phone my-3">
+      <picture>
+        <!-- For desktop -->
+        <source media="(min-width: 768px)" srcset="../images/actu.jpg" class="img-fluid" alt="actualités images">
+        <!-- For mobile -->
+        <img src="../images/actu2.jpg" class=" centre img-fluid" alt="actualités images">
+      </picture>
+    </div>
+    <div class="mt-3">
+      <div class="container mt-3">
+        <div class="row">
+          {% for vactus in actus %}
+            <div class="col-md-6">
+              <div class="card mb-3" style="width:100%;">
+
+                <div class="row g-0">
+                  <div class="col-md-6">
+                    <img src="{{ asset(vactus.images) }}" class="card-img-top img-fluid" alt="...">
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-body">
+                      <h5 class="card-title">{{vactus.name}}</h5>
+                      <p class="card-text">Commentaire:
+                        {{vactus.article}}</p>
+
+                      <div class="h-100">
+                        {% if app.user and is_granted('ROLE_ADMIN') %}
+                          <a href="{{ path('delete_actus', {id: vactus.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- ================ Avis client ==================== -->
+
+    <div class=" phone my-3">
+      <picture>
+        <!-- For desktop -->
+        <source media="(min-width: 768px)" srcset="../images/avis1.jpg" class="img-fluid" alt="avis images">
+        <!-- For mobile -->
+        <img src="../images/avis2.jpg" class=" centre img-fluid" alt="avis images 2">
+      </picture>
+    </div>
+
+    <div class="mt-3 py-3 ">
+      <div class="container mt-3">
+        <div class="row">
+          {% for vavis in avis %}
+            <div class="col-md-6">
+              <div class="card mb-3" style="width:100%;">
+                <div class="card-body w-100" style="height: 100%; overflow: hidden;">
+                  <h5 class="card-title">{{ vavis.name }}
+                    {{ vavis.prenom }}
+                  </h5>
+                  <p class="card-text" style="white-space: pre-line;">Commentaire:
+                    {{ vavis.description}}</p>
+                  <p class="card-text">Service reçu:
+                    {{ vavis.prestation }}</p>
+                  <p class="card-text">
+                    {% if vavis.note <= 2 %}
+                      <span class="text-danger">Peut mieux faire:
+                        {{ vavis.note }}/5</span>
+                    {% elseif vavis.note >= 4 %}
+                      <span class="text-success">Satisfait:
+                        {{ vavis.note }}/5</span>
+                    {% else %}
+                      <span class="text-warning">Moyen:
+                        {{ vavis.note }}/5</span>
+                    {% endif %}
+                  </p>
+                  <div class="h-100">
+                    {% if app.user and is_granted('ROLE_ADMIN') %}
+                      <a href="{{ path('delete_avis', {id: vavis.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton pour laisser un avis, visible pour tous -->
+    <button type="button" class=" avis btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Laisser un avis
+    </button>
+
+    <!-- Modal qui s'ouvre lorsque l'utilisateur clique sur le bouton ci-dessus -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Votre avis compte</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            {% if app.user and is_granted('ROLE_ADMIN') %}
+              <p>Nous serons ravis d'avoir votre propres retour en nos locaux
+                <a href="avis">Laissez votre avis</a>
+              </p>
+            {% else %}
+              <p>Pour laisser votre avis, veuillez vous connecter ou vous inscrire sur notre site.</p>
+            {% endif %}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            {% if not app.user %}
+              <a href="inscription" class="btn btn-primary">S'identifier</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- La boîte de dialogue modale -->
+    <div id="myModal" class="modal">
+      <span id="closeBtn" class="close-btn">&times;</span>
+      <div class="modal-content">
+        <p>Nous utilisons des cookies internes et des cookies tiers pour comprendre l'utilisation de notre boutique en ligne et pouvoir l'améliorer, adapter le contenu à vos préférences et personnaliser nos annonces, notre marketing et nos publications sur
+          les réseaux sociaux. Vous pouvez les accepter tous, les rejeter ou choisir votre configuration en cliquant sur les boutons correspondants. Gardez à l'esprit que le rejet des cookies peut affecter votre expérience d'achat. Pour plus d'informations,
+          vous pouvez consulter notre Politique en matière de cookies.</p>
+        <div class="button-container">
+          <button onclick="accepterCookies()">Accepter</button>
+          <button onclick="refuserCookies()">Refuser</button>
+        </div>
+        <a href="{{ path('confidentiel') }}" class="alert-link">Politique en matière de cookies</a>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/search.js"></script>
+
+  {% endblock %}

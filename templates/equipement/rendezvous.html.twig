@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<div class="container centre">
+  {% for level, messages in app.flashes %}
+  {% for message in messages %}
+  <div class="alert text-center col-6 alert-{{ level }}">
+    {{ message|raw }}
+  </div>
+  {% endfor %}
+  {% endfor %}
+</div>
+  <div class="container mt-5">
+
+
+    <h2>Parametrez les rendez-vous</h2>
+    <div class="col-12">
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn-parametre" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
+          Ajouter un Rendez-vous
+        </button>
+      </div>
+    </div>
+
+    <form enctype="multipart/form-data" method="post" action="#">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter un Rendez-vous</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="name w-50 p-3">
+                <label for="type" class="form-label">Prestation</label>
+                <select class="form-control" id="type" name="type">
+                  <option value="0" selected="selected" disabled="disabled">Prestation</option>
+                  {% for p, c in type %}
+                    <option value="{{ p }}">{{ c }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="name w-50 p-3">
+                <label for="famille" class="form-label">Famille</label>
+                <select class="form-control" id="famille" name="famille">
+                  <option value="0" selected="selected" disabled="disabled">Famille</option>
+                  {% for p, c in famille %}
+                    <option value="{{ p }}">{{ c }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="date">Date de rendez-vous</label>
+                <input type="date" class="form-control" id="date" name="date" required="required" pattern="\d{4}-\d{2}-\d{2}">
+              </div>
+
+              <div class="form-group">
+                <label for="heure_debut">Heure de début</label>
+                <input type="time" class="form-control" id="heure_debut" name="heure_debut" required="required" pattern="[0-9]{2}:[0-9]{2}">
+              </div>
+
+
+              <div class="form-group">
+                <label for="quantite">Place disponible</label>
+                <input type="number" class="form-control" id="quantite" name="quantite" required="required" >
+              </div>
+
+              <!-- Faut ajouter correctement le champs date ensuite ajouter le champs horaire qui permettra de limiter les heures de rendez-vous de Une heure à une heure -->
+
+            </div>
+
+            <div class="button">
+              <button type="submit" class="btn btn-primary my-3 centre">Enregistrer le Rendez-vous</button>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <a href="{{ path('home') }}" class="btn btn-primary">Page d'Accueil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+{% endblock %}

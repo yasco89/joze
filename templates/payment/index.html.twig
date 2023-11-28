@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block title %}paiement{% endblock %}
+
+{% block body %}
+
+  <section class="container mt-5">
+
+    <div class="row">
+
+      <!-- Première carte pour les détails du produit -->
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            Détails du produit
+          </div>
+          <div class="card-body">
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-house" style="color: #000000;"></i>
+              Hébergement :
+              <span class=" font20">{{ produits.name}}</span>
+            </p>
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-hotel" style="color: #000000;"></i>
+              Type d'habitation :
+              <span class=" font20">{{ produits.famille }}</span>
+            </p>
+            <p class="card-text c-black capitalize">Balcon :
+              <span class=" font20">{{ produits.balcon }}</span></p>
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-square-parking" style="color: #000000;"></i>
+              Stationnement:
+              <span class=" font20">{{ produits.parking }}</span>
+            </p>
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-user-shield" style="color: #000000;"></i>
+              Gardien :
+              <span class=" font20">{{ produits.gardien }}</span>
+            </p>
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-bed" style="color: #000000;"></i>
+              Nombre de chambre :
+              {% if produits.quantite > 0 %}
+                <span class=" font20" id="quantite">{{ produits.quantite }}
+                  pièces</span>
+              {% else %}
+                <span class=" font20">Prochainement</span>
+              {% endif %}
+            </p>
+
+            {% if produits.personne > 0 %}
+              <p class="card-text c-black capitalize">
+                <i class="fa-solid fa-users" style="color: #000000;"></i>
+                Personne par chambre:
+                <span class=" font20" id="quantite">{{ produits.personne }}</span>
+              </p>
+              <p class="card-text c-black capitalize">
+                <i class="fa-solid fa-people-roof" style="color: #000000;"></i>
+                Type de chambre :
+                <span class=" font20" id="repondeur">{{ produits.type }}</span>
+              </p>
+            {% endif %}
+
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-tags" style="color: #000000;"></i>
+              Prix :
+              <span class=" font20">{{ produits.prix }}
+                €</span>
+            </p>
+            <p class="card-text c-black capitalize">
+              <i class="fa-solid fa-calendar" style="color: #000000;"></i>
+              Disponible du :
+              <span class="font20">{{ produits.dateDebut|date('d/m/Y') }}</span>
+              au
+              <span class="font20">{{ produits.dateFin|date('d/m/Y') }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deuxième carte pour le formulaire de paiement -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Paiement
+          </div>
+          <div class="card-body">
+                       <form action="/payment-success" method="post" id="payment-form">
+                           <div class="form-group">
+                               <label for="cardholder-name"><i class="fa-solid fa-user"></i> Nom du titulaire de la carte :</label>
+                               <input type="text" name="cardholder-name" id="cardholder-name" placeholder="Nom + prénom" class="form-control mb-3">
+                               <label for="card-element">Détails de la carte :</label>
+                               <div id="card-element" class="mb-3">
+                           </div>
+
+
+
+                           </div>
+                           <div class="form-group">
+                               <button class="btn btn-success" type="submit" id="submit">Payer</button>
+                           </div>
+                       </form>
+                   </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- Fin de la rangée -->
+
+  </section>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    var stripe = Stripe('ta_clé_publique');
+    var elements = stripe.elements();
+
+    var card = elements.create('card');
+    card.mount('#card-element');
+
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      stripe.confirmCardPayment('{{ clientSecret }}', {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: document.getElementById('cardholder-name').value
+          }
+        }
+      }).then(function(result) {
+        if (result.error) {
+          // Gérer l'erreur
+          console.error(result.error.message);
+        } else {
+          // Le paiement a réussi!
+          form.submit();
+        }
+      });
+    });
+  </script>
+{% endblock %}

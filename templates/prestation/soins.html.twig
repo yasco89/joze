@@ -1,0 +1,290 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Soins Capillaire
+{% endblock %}
+
+{% block body %}
+  <div class="phone">
+    <picture>
+      <!-- For desktop -->
+      <source media="(min-width: 768px)" srcset="../images/prestationsoins.jpg" class="img-fluid" alt="image de fond">
+      <!-- For mobile -->
+      <img src="../images/prestationsoins2.jpg" class=" centre img-fluid" alt="image de fond">
+    </picture>
+  </div>
+  <section class="article">
+    <div class="d-none d-md-block">
+    <div class="image-container">
+
+        <h1 class="style_mag">Style Mag</h1>
+
+        <div class="hover-image image-top">
+            <img src="../images/soins1.jpg" alt="Image 1">
+            
+        </div>
+
+        <div class="hover-image image-bottom">
+            <img src="../images/soins3.jpg" alt="Image 1">
+            
+        </div>
+
+        <div class="hover-image image-end">
+            <img src="../images/soins2.jpg" alt="Image 3">
+            
+        </div>
+
+    </div>
+</div>
+
+    <div class="container my-5">
+      <div class="roww">
+
+        <div class="row">
+          <div class="md-6">
+            <div class="product-description caseparam card h-100 shadow-lg">
+              <h1>Une Parenthèse Douce et Bienveillante chez J'OZE Avant l'Epreuve</h1>
+              <p>Bienvenue dans l'univers réconfortant de J'OZE, où nous offrons une expérience unique aux clients professionnels qui font face à la
+                <span class="keyword">chimiothérapie</span>. Chez nous, la
+                <span class="keyword">pose de perruque</span>
+                n'est pas seulement un acte médical, c'est une expérience agréable, un moment de détente et de bien-être avant une étape difficile.</p>
+
+              <h2>
+                <span class="keyword">Accueil Chaleureux et Discret</span>
+              </h2>
+              <p>Nous comprenons l'importance de sortir du milieu médicalisé. Chez J'OZE, l'accueil est chaleureux et discret. Vous serez traité avec la plus grande délicatesse dès votre entrée, créant une atmosphère paisible loin du contexte médical habituel.</p>
+
+              <h2>
+                <span class="keyword">Coupe Offerte et Massage du Cuir Chevelu</span>
+              </h2>
+              <p>Avant l'épreuve de la
+                <span class="keyword">chimiothérapie</span>, nous offrons à nos clients professionnels une
+                <span class="keyword">coupe personnalisée</span>
+                gratuite, pour que chaque visite soit une célébration de vous-même. De plus, profitez d'un
+                <span class="keyword">massage doux du cuir chevelu</span>
+                pour une détente totale.</p>
+
+              <h2>
+                <span class="keyword">Pose de Perruque en Douceur</span>
+              </h2>
+              <p>La
+                <span class="keyword">pose de votre perruque</span>
+                chez J'OZE va au-delà d'un simple service. C'est un moment d'apaisement, de conseils attentionnés, et de soutien. Nous sommes là pour vous accompagner tout au long de cette étape, veillant à ce que chaque instant soit confortable et positif.</p>
+
+              <p>Chez J'OZE, nous sommes honorés de vous offrir bien plus qu'un service capillaire. Nous créons une expérience exceptionnelle, un refuge avant l'épreuve, où chaque geste est empreint de
+                <span class="keyword">douceur</span>
+                et de
+                <span class="keyword">bienveillance</span>. Notre mission est de faire de chaque visite un moment spécial, où vous pouvez vous sentir entouré(e) et soutenu(e) tout en prenant soin de vous.</p>
+
+              <h2>
+                <span class="keyword">Privatisation du Salon pour la Pose de Perruques</span>
+              </h2>
+              <p>Pour les personnes malades désirant la
+                <span class="keyword">pose de perruques</span>, nous offrons la possibilité de privatiser le salon le
+                <span class="keyword">LUNDI</span>
+                de
+                <span class="keyword">09H00</span>
+                à
+                <span class="keyword">19H00</span>
+                non-stop. Que ce soit à votre
+                <span class="keyword">domicile</span>
+                ou dans notre
+                <span class="keyword">salon</span>, nous sommes là pour vous accueillir dans un environnement dédié à votre bien-être.</p>
+
+            </div>
+          </div>
+
+          {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+          <div class="titre_article w-100 mb-3">
+            <h2 class="bold Capitalize">Rendez-vous disponible </h2>
+          </div>
+            {% set hasAppointments = false %}
+            {% for rdvs in rdv %}
+              {% if rdvs.famille == 'Soins' %}
+                 {% set hasAppointments = true %}
+                {% if loop.index % 3 == 1 %}
+                  <div class="roww ">
+                  {% endif %}
+
+                  <div class="col-md-4">
+                    <div class="card mb-3 mt-3 product-description h-100">
+                      <div class="card-body   h-100  shadow-lg ">
+                        {# Vérifier si la date est définie #}
+                        {% if rdvs.date is defined %}
+                          {# Afficher la date formatée #}
+                          <h5 class="card-title">Jour du rendez-vous :{{ rdvs.date|date("l") }}
+                          </h5>
+
+                          <h5 class="card-title">Date :
+                            {{ rdvs.date|date("d-m-Y") }}</h5>
+                        {% else %}
+                          <p class="card-text">
+                            <small class="text-muted">Date non définie</small>
+                          </p>
+                        {% endif %}
+
+                        <p class="card-text">Type de prestation:
+                          {{ rdvs.famille }}</p>
+
+                        {# Vérifier si l'heure de début est définie #}
+                        {% if rdvs.heureDebut is defined %}
+                          {# Afficher l'heure de début formatée #}
+                          <p class="card-text">
+                            Créneau horaire disponible
+                            <small class="btn btn-primary">
+                              {{ rdvs.heureDebut|date("H:i") }}
+                              H /
+                              {{ rdvs.heureFin|date("H:i") }}
+                              H
+                            </small>
+                          </p>
+
+                        {% else %}
+                          <p class="card-text">
+                            <small class="text-muted">Heure de début non définie</small>
+                          </p>
+                        {% endif %}
+
+                        <p class="card-text">Service reçu:
+                          {{ rdvs.type }}</p>
+                        <p class="card-text">
+                          {% if rdvs.quantite >= 1 %}
+                            <p class="text-danger">Place disponible:
+                              {{ rdvs.quantite }}</p>
+                                <a href="{{ path('rdvview', {id:  rdvs.id}) }}" class=" centre btn btn-success">Prendre un rendez-vous</a>
+                          {% else %}
+                            <p class="text-warning">Choisissez un autre créneau d'horaires</p>
+                          {% endif %}
+                        </p>
+
+                        <div class="">
+
+                          {% if app.user and is_granted('ROLE_ADMIN') %}
+                          <a href="{{ path('delete_rdv', {id: rdvs.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% if loop.index % 3 == 0 or loop.last %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% if not hasAppointments %}
+                   <p class=" phone centre capitalize">Aucun rendez-vous disponible</p>
+               {% endif %}
+          {% else %}
+            <div class="col-md-6 centre my-3 ">
+              <div class="caseparam card h-100  shadow-lg ">
+
+                <div class="card-body">
+                  <h5 class="card-title">Effectuer une Réservation</h5>
+                  <hr>
+                  <div class="mb-3">
+                    <p class="text-center">
+                      Afin de planifier un rendez-vous, veuillez vous connecter à votre compte. Si vous n'êtes pas encore inscrit, nous vous invitons à vous inscrire.
+                    </p>
+
+                    <div class="text-center">
+                      <a class="btn btn-primary" href="{{ path('app_login') }}">
+                        <i class="fa-solid fa-face-grin" style="color: #ffffff;"></i>
+                        Se Connecter et Réserver
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+    <div class="titre_article w-100 mb-3">
+      <h2 class="bold Capitalize">Produits Disponible</h2>
+    </div>
+
+      <div class="roww " id="productsContainer">
+        {% for produits in produit %}
+          {% if produits.famille == 'Soins' %}
+            <div class="col-md-3 mb-4" style="margin:10px;">
+              <div class="card-group h-100">
+                <div class="product card ">
+                  <img src="{{ asset(produits.images) }}" class="card-img-top" alt="...">
+
+                  <div class="card-body" style="min-height: 150px;">
+                    <h5 class="card-title Capitalize" id="product">
+                      {{ produits.name|slice(0,50) }}</h5>
+                    <p class="card-title" data-search="{{ produits.famille|slice(0,50) }}">Catégorie :
+                      {{ produits.famille|slice(0,50) }}</p>
+                  </div>
+                  <div class="card-footer">
+                    {% if produits.quantite > 0 %}
+                      <small class="text-body-secondary">Quantité :
+                        {{ produits.quantite }}</small>
+                      <small class="text-body-secondary"></small>
+
+                      <button type="button" name="button" class="price">Prix:
+                        {{ produits.prix }}
+                        €</button>
+                      <div class="">
+
+                        <a href="{{ path('view_produit', {id:  produits.id}) }}" class="btn btn-success btn-sm">Réserver</a>
+                        {% if app.user and is_granted('ROLE_ADMIN') %}
+                          <a href="{{ path('delete_produit', {id:  produits.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                        {% endif %}
+                      </div>
+                    {% else %}
+                      <p class="text-body-secondary">Prochainement</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% if loop.index % 3 == 0 %}
+            </div>
+            <div class="row">
+            {% endif %}
+          {% endif %}
+          <!-- Fin de la condition if -->
+        {% endfor %}
+      </div>
+
+      {% set hasProduit = false %}
+
+    {% for produits in produit %}
+        {% if produits.famille == 'Soins' %}
+            {% set hasProduit = true %}
+
+            <!-- Afficher les détails du produit enfant ici si nécessaire -->
+        {% endif %}
+    {% endfor %}
+
+    {% if not hasProduit %}
+        <p class=" container phone bold centre Capitalize mb-3">Pour le moment aucun produit n'est disponible pour la catégorie enfant</p>
+    {% endif %}
+
+
+    {% else %}
+      <div class="centre">
+        <a class="overlay-boutique" href="{{ path('app_login') }}">Allez à la boutique</a>
+
+      </div>
+          <p class=" centre phone my-3 bold">Veuillez vous connecter pour découvrir vos aventages clients</p>
+
+    {% endif %}
+  </section>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+security:
+    access_control:
+        - { path: ^/path/to/your/route, roles: [ROLE_ADMIN, ROLE_HOST] }

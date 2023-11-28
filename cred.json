@@ -1,0 +1,12 @@
+{
+  "web": {
+    "client_id": "314528950101-vc0nv36gtc17vpm7ehffajs36ll4ueq8.apps.googleusercontent.com",
+    "project_id": "infinity-telecom-395123",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "redirect_uris": ["http://127.0.0.1:8000/google-calendar"],
+    "javascript_origins": ["http://127.0.0.1:8000", "http://localhost:8000"]
+  }
+}

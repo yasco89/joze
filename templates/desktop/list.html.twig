@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Equipement{% endblock %}
+
+{% block body %}
+
+
+  <div class="no-resp-parametre">
+    <div class="container">
+
+      <h1>Liste des équipements desktop </h1>
+
+      <div class="">
+        <!-- <div class="mb-3">
+          <label for="floatingInput">Recherche de produit</label>
+          <input type="text" class="form-control me-2" id="myInput" onkeyup="myFunction()">
+        </div> -->
+
+      </div>
+
+      <table class="table" id="myTable">
+
+        <input type="text" class="form-control me-2" id="myInput" onkeyup="myFunction()" placeholder="Rechercher équipements" >
+                <thead>
+          <tr>
+            <th class="c-red" scope="col">Nom du produit</th>
+            <th class="c-red" scope="col">Description</th>
+
+            <th class="c-black" scope="col">Categorie de l'équipement</th>
+            <th class="c-black" scope="col">Famille équipement</th>
+            <th class="c-red" scope="col">Image</th>
+            <th class="c-black" scope="col">Interface</th>
+            <th class="c-black" scope="col">Compatibilités</th>
+            <th class="c-red" scope="col">Quantite</th>
+            <th class="c-red" scope="col">Stockage</th>
+            <th class="c-black" scope="col">Actions</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for usbs in usb %}
+            <tr>
+              <td class="c-black">
+                <p class="Capitalize">
+                  {{ usbs.nom|slice(0,50) }}
+                </p>
+              </td>
+
+              <td class="c-black">
+                <p class="Capitalize">
+              Aucune
+                </p>
+              </td>
+              <td>
+                <p class="text-uppercase bold text-success">
+                  {{ usbs.categorie|slice(0,50) }}
+                </p>
+              </td>
+              <td>
+                <p class="text-uppercase bold text-success">
+                  {{ usbs.famille|slice(0,50) }}
+                </p>
+              </td>
+              <td>
+                <p>prochainement</p>
+
+              </td>
+              <td class="c-black">
+                <p class="Capitalize">
+                  {{ usbs.interface}}
+                </p>
+              </td>
+
+              <td class="c-black">
+                <p class="Capitalize">
+                  {{ usbs.compatible}}
+                </p>
+              </td>
+
+
+
+              <td>
+                <p class="c-black">{{ usbs.quantite}}</p>
+              </td>
+
+              <td class="c-black">
+                <p class="Capitalize">
+                  {{ usbs.stockage}}
+                </p>
+              </td>
+
+              <td>
+                <div class="centre">
+  <a href="{{ path('view_stockequipement', {id:  usbs.id}) }}" class="btn btn-warning btn-sm">Voir</a>
+
+                </div>
+              </td>
+
+            </tr>
+
+          {% endfor %}
+
+
+
+        </tbody>
+      </table>
+
+    </div>
+          <a href="{{ path('equipement') }}" class="btn btn-warning my-3 centre">Ajouter un equipement</a>
+  </div>
+
+
+
+
+  <script type="text/javascript" src="js/search.js"></script>
+
+{% endblock %}

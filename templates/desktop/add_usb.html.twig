@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block title %}Ajout d'un produit{% endblock %}
+
+{% block body %}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Ajouter un équipement
+</button>
+  <form method="post" action="#">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter un equipement bureau </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="name">Nom :</label>
+              <input type="text" class="form-control" id="name" name="nom" required="required">
+            </div>
+
+
+            <div class="form-group">
+              <label for="quantite">Quantité :</label>
+              <input type="number" class="form-control" id="quantite" name="quantite" required="required">
+            </div>
+
+            <div class="form-group">
+              <label for="stockage">Stockage :</label>
+              <input type="number" class="form-control" id="stockage" name="stockage" required="required">
+            </div>
+
+            <div class="name w-50 p-3">
+              <label for="categorie" class="form-label">categorie:</label>
+
+              <select class="form-control" id="categorie" name="categorie">
+                <option value="0" selected="selected" disabled="disabled">Choisir la categorie :
+                </option>
+                {% for p, c in categorie %}
+                  <option value="{{ p}}">{{ c }}</option>;
+                {% endfor %}
+              </select>
+
+            </div>
+
+
+            <div class="name w-50 p-3">
+              <label for="interface" class="form-label">Interface:</label>
+
+              <select class="form-control" id="interface" name="interface">
+                <option value="0" selected="selected" disabled="disabled">Choisir l'interface :
+                </option>
+                {% for p, c in interface %}
+                  <option value="{{ p}}">{{ c }}</option>;
+                {% endfor %}
+              </select>
+
+            </div>
+
+            <div class="name w-50 p-3">
+              <label for="compatible" class="form-label">Compatibilités:</label>
+
+              <select class="form-control" id="compatible" name="compatible">
+                <option value="0" selected="selected" disabled="disabled">Compatible :
+                </option>
+                {% for p, c in compatible %}
+                  <option value="{{ p}}">{{ c }}</option>;
+                {% endfor %}
+              </select>
+
+            </div>
+
+
+
+            <!-- // ici nous avons la catégorie de l'équipement sois la famille "multimédia reunion ect ect" -->
+            <div class="name w-50 p-3">
+              <label for="famille" class="form-label">Famille de l'équipement:</label>
+
+              <select class="form-control" id="famille" name="famille">
+                <option value="0" selected="selected" disabled="disabled">Choisir la famille du produit :
+                </option>
+                {% for p, c in famille %}
+                  <option value="{{ p }}">{{ c }}</option>;
+                {% endfor %}
+              </select>
+
+            </div>
+
+
+
+            <div class="button">
+              <button type="submit" class="btn btn-primary my-3 centre">Enregistrez dans le stock</button>
+            </div>
+
+          </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-primary">Page d'Accueil</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <a href="{{path('liste')}}">liste</a>
+
+  <script src="../js/script.js"></script>
+{% endblock %}

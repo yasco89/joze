@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+  Ajouter une actualités
+{% endblock %}
+{% block body %}
+  <div class="container mt-5 h-100">
+    <h2>Ajouter une actualités</h2>
+    <div class="col-12 ">
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="button" class="btn-parametre" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
+          Ajouter une actualités
+        </button>
+      </div>
+    </div>
+
+    <form enctype="multipart/form-data" method="post" action="#">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">  Ajouter une actualités</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label for="name">Nom de l'article :</label>
+                <input type="text" class="form-control" id="name" name="name" required="required">
+              </div>
+
+              <div class="form-group">
+                <label for="article">Article :</label>
+                <input type="text" class="form-control" id="article" name="article" required="required">
+              </div>
+
+              <div class="name">
+                <label for="images" class="form-label">Affiche</label>
+                <input type="file" id="images" name="images" class="form-control" accept="image/png, image/jpeg">
+              </div>
+
+
+
+
+            </div>
+
+
+            <div class="button">
+              <button type="submit" class="btn btn-primary my-3 centre">Enregistrer dans le stock</button>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <a href="{{ path('home') }}" class="btn btn-primary">Page d'Accueil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+{% endblock %}

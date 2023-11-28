@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste habitation{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4">Liste des produits</h1>
+    <input id="searchInput" type="text" onkeyup="search()" class="form-control mb-3" placeholder="Recherche...">
+
+    <div class="table-responsive">
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th class="c-black" scope="col">Prestation</th>
+                    <th class="c-red" scope="col">Nom</th>
+
+                    <th class=" respphone c-black" scope="col">Type</th>
+                    <th class="c-red" scope="col">Quantité</th>
+                    <th class=" respphone c-red" scope="col">prix €</th>
+                    <th class="c-black" scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produits in produit %}
+                <tr>
+                    <td>
+                        <p class="text-uppercase bold text-success">{{ produits.famille|slice(0,50) }}</p>
+                    </td>
+                    <td class="c-black">
+                        <p class="capitalize">{{ produits.name|slice(0,50) }}</p>
+                    </td>
+
+                    <td class="respphone">
+                        <p class="c-black">{{ produits.type }}</p>
+                    </td>
+
+                    <td>
+                        <p class="c-black">{{ produits.quantite }}</p>
+                    </td>
+                    <td class="respphone">
+                        <p class=" respphone c-black">{{ produits.prix }}</p>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a href="{{ path('view_produit', {id: produits.id}) }}" class="btn btn-warning btn-sm m3">Voir</a>
+                            <a href="{{ path('modifierproduit', {id: produits.id}) }}" class="btn btn-warning btn-sm m3">Modifier</a>
+
+
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="{{ path('equipement') }}" class="btn btn-warning my-3">Ajouter un bien</a>
+        <a href="{{ path('view_my_produits') }}" class="btn btn-warning my-3">voir mes bien</a>
+
+
+    </div>
+</div>
+<script type="text/javascript" src="js/search.js"></script>
+{% endblock %}

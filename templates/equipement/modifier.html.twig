@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'habitation :'{{ produits.name }}
+{% endblock %}
+
+{% block body %}
+  <div class="container ">
+    <div class=" caseparam card mb-4">
+      <div class="card">
+        <h3 class="card-title">Modifier le produit :' "{{ produits.name }}"</h3>
+
+        <form action="{{ path('modifierproduit', {id: produits.id}) }}" method="POST">
+          <div class="form-control">
+            <label>Nom</label>
+            <input type="text" name="name" value="{{ produits.name }}" class="form-control">
+          </div>
+
+          <div class="form-control">
+            <label>Type de produit :</label>
+            <select class="form-control" id="type" name="type">
+              <option value="0" selected="selected" disabled="disabled">
+                <span>{{ produits.type }}</span>
+              </option>
+              {% for p, c in type %}
+                <option value="{{ p }}">{{ c }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="form-control">
+            <label>Prestation :</label>
+            <select class="form-control" id="famille" name="famille">
+              <option value="0" selected="selected" disabled="disabled">
+                <span>{{ produits.famille }}</span>
+              </option>
+              {% for p, c in famille %}
+                <option value="{{ p }}">{{ c }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-control">
+            <label>Nombre de produit disponible en boutique :</label>
+            <input type="number" name="quantite" value="{{ produits.quantite }}" class="form-control">
+          </div>
+
+
+          <div class="form-control">
+            <label>Prix :</label>
+            <input type="number" name="prix" value="{{ produits.prix }}" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-success">Enregistrer les modifications</button>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+{% endblock %}

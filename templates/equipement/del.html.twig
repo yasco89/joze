@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww">
+      <div class="col-md-6">
+        <div class=" caseparam card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Supprimer le produit numéros :
+              {{ produit.id }}</h5>
+
+            <div class="roww align-items-start">
+              <div class="col">
+                <img src="{{ asset(produit.images) }}" class=" card img-fluid imgiew">
+              </div>
+              <div class="col">
+                <form class="row g-3">
+                  <p class="card-text c-black capitalize">Nom du produit :
+                    <span class="c-blue font20">{{ produit.name}}</span></p>
+                  <p class="card-text c-black capitalize">Famille :
+                    <span class="c-blue font20">{{ produit.famille }}</span></p>
+                  <p class="card-text c-black capitalize">Catégorie du produit :
+                    <span class="c-blue font20">{{ produit.categorie }}</span></p>
+                  <p class="card-text c-black capitalize">Quantité :
+
+                    <span class="c-blue font20" id="quantite">{{ produit.quantite }}
+                      pièces</span>
+
+                  </p>
+
+                  <p class="card-text c-black capitalize">Répertoir :
+                    <span class="c-blue font20" id="quantite">{{ produit.repertoir }}
+                      contact</span>
+
+                    <p class="card-text c-black capitalize">Répondeur :
+                      <span class="c-blue font20" id="repondeur">{{ produit.repondeur  }}
+                      </span>
+
+                    </p>
+
+                    <button type="submit" class="btn btn-warning centre" name="submit">
+                      supprimer le modèle
+                      {{ produit.name }}
+                    </button>
+                    <p class="card-text c-black capitalize">Attention cette action supprimera définitivement l'article n °
+                      <span class="c-blue font20" >{{ produit.id }}
+                      </span>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% endblock %}

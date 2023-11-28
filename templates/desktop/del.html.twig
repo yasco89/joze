@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression
+{% endblock %}
+
+{% block body %}
+  <header class="info-page">
+    <div class="title">
+      <h1 class="title-product">Matériel de Bureau</h1>
+    </div>
+    <img src="../images/desktop/desktop.png" class="img-fluid" alt="...">
+  </header>
+
+  <div class="container card">
+    <h1>Formulaire de réservation :</h1>
+    <div class="reservproduct">
+      <div class="container">
+        <div class=" mb-3 my-3">
+          <div class="row g-0">
+            {% if app.user and is_granted('ROLE_ADMIN') %}
+              <div class="centre my-3">
+                <a class="btn btn-primary btn-sm" href="{{ path('liste') }}">Liste complète du stock</a>
+              </div>
+            {% else %}
+              <a href="{{ path('home') }}" class="btn btn-primary btn-sm">Accueil</a>
+            {% endif %}
+            <div class="col">
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <p class="c-black Capitalize">Nom du produit : <span class="c-red font20">{{ usb.nom }}</span></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="c-black Capitalize">Stockage : <span class="c-red text-uppercase font20">{{ usb.stockage }} GB</span></p>
+                </div>
+                <div class="col-12">
+                  <p class="c-black Capitalize">Famille : <span class="c-red font20">{{ usb.famille }}</span></p>
+                </div>
+                <div class="col-12">
+                  <p class="c-black Capitalize">Catégorie du produit : <span class="c-red font20">{{ usb.categorie }}</span></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="c-black Capitalize">Quantité : <span class="c-red font20" id="quantite">{{ usb.quantite }} pieces</span></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-center c-black">Identifiant : N°{{ usb.id }}</p>
+                </div>
+                <button type="submit" class="btn btn-warning centre" name="submit">
+                  supprimer le modèle {{ usb.nom }}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

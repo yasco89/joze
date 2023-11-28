@@ -1,0 +1,276 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  coupe - femme{% endblock %}
+
+{% block body %}
+
+<div class="phone">
+  <picture>
+    <!-- For desktop -->
+    <source media="(min-width: 768px)" srcset="../images/prestationfemme.jpg" class="img-fluid" alt="image de fond">
+    <!-- For mobile -->
+    <img src="../images/prestationfemme2.jpg" class=" centre img-fluid" alt="image de fond">
+  </picture>
+</div>
+  <section class="article">
+    <div class="d-none d-md-block">
+    <div class="image-container">
+
+        <h1 class="style_mag">Style Mag</h1>
+
+        <div class="hover-image image-top">
+            <img src="../images/femme1.jpg" alt="Image 1">
+            
+        </div>
+
+        <div class="hover-image image-bottom">
+            <img src="../images/femme3.jpg" alt="Image 1">
+            
+        </div>
+
+        <div class="hover-image image-end">
+            <img src="../images/femme2.jpg" alt="Image 3">
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+    <div class="container my-5">
+      <div class="roww">
+
+        <div class="row">
+          <div class="md-6">
+              <div class="product-description caseparam card h-100  shadow-lg ">
+                  <h1>Transformez votre Style avec les Coiffures Femme de J'OZE</h1>
+                  <p>Entrez dans l'univers de J'OZE, où l'excellence et le style se rencontrent pour créer des
+                      <span class="keyword">coiffures pour femmes</span>
+                      inégalées. Notre salon est reconnu pour ses coupes sur mesure, adaptées à votre personnalité.</p>
+
+                  <h2>
+                      <span class="keyword">Coupes et Styles Variés</span></h2>
+                  <p>Que vous recherchiez une
+                      <span class="keyword">coupe particuliere</span>
+                      ou un style plus classique, notre équipe de coiffeurs experts est là pour répondre à vos attentes.</p>
+
+                  <h2>
+                      <span class="keyword">Techniques Avancées et Tendances</span></h2>
+                  <p>Restez à la pointe de la mode avec nos
+                      <span class="keyword">techniques de coupe avancées</span>
+                      et les dernières
+                      <span class="keyword">tendances en matière de coiffure féminine</span>. Nous nous adaptons constamment aux nouveautés du monde de la coiffure.</p>
+
+                  <h2>
+                      <span class="keyword">Conseils Personnalisés et Suivi</span></h2>
+                  <p>Notre équipe est dédiée à vous offrir des
+                      <span class="keyword">conseils personnalisés</span>
+                      pour maintenir votre style entre les visites. Profitez d'un suivi professionnel pour une coiffure toujours impeccable.</p>
+
+                  <h2>
+                      <span class="keyword">Soins Capillaires de Qualité</span></h2>
+                  <p>En plus des coupes, nous proposons une gamme de
+                      <span class="keyword">soins capillaires</span>
+                      spécialement conçus pour les femmes. Des produits revitalisants aux traitements spécifiques, tout pour maintenir la santé de vos cheveux.</p>
+
+                  <p>Chez J'OZE, nous sommes fiers de vous offrir un service d'exception, en mettant l'accent sur la qualité, le style et votre satisfaction.</p>
+              </div>
+          </div>
+
+
+          {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+          <div class="titre_article w-100 mb-3">
+            <h2 class="bold Capitalize">Rendez-vous disponible </h2>
+          </div>
+            {% set hasAppointments = false %}
+            {% for rdvs in rdv %}
+              {% if rdvs.famille == 'Coupe-Femme' %}
+                 {% set hasAppointments = true %}
+                {% if loop.index % 3 == 1 %}
+                  <div class="roww ">
+                  {% endif %}
+
+                  <div class="col-md-4">
+                    <div class="card mb-3 mt-3 product-description h-100">
+                      <div class="card-body   h-100  shadow-lg ">
+                        {# Vérifier si la date est définie #}
+                        {% if rdvs.date is defined %}
+                          {# Afficher la date formatée #}
+                          <h5 class="card-title">Jour du rendez-vous :{{ rdvs.date|date("l") }}
+                          </h5>
+
+                          <h5 class="card-title">Date :
+                            {{ rdvs.date|date("d-m-Y") }}</h5>
+                        {% else %}
+                          <p class="card-text">
+                            <small class="text-muted">Date non définie</small>
+                          </p>
+                        {% endif %}
+
+                        <p class="card-text">Type de prestation:
+                          {{ rdvs.famille }}</p>
+
+                        {# Vérifier si l'heure de début est définie #}
+                        {% if rdvs.heureDebut is defined %}
+                          {# Afficher l'heure de début formatée #}
+                          <p class="card-text">
+                            Créneau horaire disponible
+                            <small class="btn btn-primary">
+                              {{ rdvs.heureDebut|date("H:i") }}
+                              H /
+                              {{ rdvs.heureFin|date("H:i") }}
+                              H
+                            </small>
+                          </p>
+
+                        {% else %}
+                          <p class="card-text">
+                            <small class="text-muted">Heure de début non définie</small>
+                          </p>
+                        {% endif %}
+
+                        <p class="card-text">Service reçu:
+                          {{ rdvs.type }}</p>
+                        <p class="card-text">
+                          {% if rdvs.quantite >= 1 %}
+                            <p class="text-danger">Place disponible:
+                              {{ rdvs.quantite }}</p>
+                                <a href="{{ path('rdvview', {id:  rdvs.id}) }}" class=" centre btn btn-success">Prendre un rendez-vous</a>
+                          {% else %}
+                            <p class="text-warning">Choisissez un autre créneau d'horaires</p>
+                          {% endif %}
+                        </p>
+
+                        <div class="">
+
+                          {% if app.user and is_granted('ROLE_ADMIN') %}
+                          <a href="{{ path('delete_rdv', {id: rdvs.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% if loop.index % 3 == 0 or loop.last %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {% if not hasAppointments %}
+                   <p class=" phone centre capitalize">Aucun rendez-vous disponible</p>
+               {% endif %}
+          {% else %}
+            <div class="col-md-6 centre my-3 ">
+              <div class="caseparam card h-100  shadow-lg ">
+
+                <div class="card-body">
+                  <h5 class="card-title">Effectuer une Réservation</h5>
+                  <hr>
+                  <div class="mb-3">
+                    <p class="text-center">
+                      Afin de planifier un rendez-vous, veuillez vous connecter à votre compte. Si vous n'êtes pas encore inscrit, nous vous invitons à vous inscrire.
+                    </p>
+
+                    <div class="text-center">
+                      <a class="btn btn-primary" href="{{ path('app_login') }}">
+                        <i class="fa-solid fa-face-grin" style="color: #ffffff;"></i>
+                        Se Connecter et Réserver
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+
+
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_HOST') or is_granted('ROLE_USER') %}
+    <div class="titre_article w-100 mb-3">
+      <h2 class="bold Capitalize">Produits Disponible</h2>
+    </div>
+
+      <div class="roww " id="productsContainer">
+        {% for produits in produit %}
+          {% if produits.famille == 'Coupe-Femme' %}
+            <div class="col-md-3 mb-4" style="margin:10px;">
+              <div class="card-group h-100">
+                <div class="product card ">
+                  <img src="{{ asset(produits.images) }}" class="card-img-top" alt="...">
+
+                  <div class="card-body" style="min-height: 150px;">
+                    <h5 class="card-title Capitalize" id="product">
+                      {{ produits.name|slice(0,50) }}</h5>
+                    <p class="card-title" data-search="{{ produits.famille|slice(0,50) }}">Catégorie :
+                      {{ produits.famille|slice(0,50) }}</p>
+                  </div>
+                  <div class="card-footer">
+                    {% if produits.quantite > 0 %}
+                      <small class="text-body-secondary">Quantité :
+                        {{ produits.quantite }}</small>
+                      <small class="text-body-secondary"></small>
+
+                      <button type="button" name="button" class="price">Prix:
+                        {{ produits.prix }}
+                        €</button>
+                      <div class="">
+
+                        <a href="{{ path('view_produit', {id:  produits.id}) }}" class="btn btn-success btn-sm">Réserver</a>
+                        {% if app.user and is_granted('ROLE_ADMIN') %}
+                          <a href="{{ path('delete_produit', {id:  produits.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                        {% endif %}
+                      </div>
+                    {% else %}
+                      <p class="text-body-secondary">Prochainement</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% if loop.index % 4 == 0 %}
+            </div>
+            <div class="row">
+            {% endif %}
+          {% endif %}
+          <!-- Fin de la condition if -->
+        {% endfor %}
+      </div>
+
+      {% set hasProduit = false %}
+
+    {% for produits in produit %}
+        {% if produits.famille == 'Coupe-Femme' %}
+            {% set hasProduit = true %}
+
+            <!-- Afficher les détails du produit enfant ici si nécessaire -->
+        {% endif %}
+    {% endfor %}
+
+    {% if not hasProduit %}
+        <p class=" container phone bold centre Capitalize mb-3">Pour le moment aucun produit n'est disponible pour la catégorie enfant</p>
+    {% endif %}
+
+
+    {% else %}
+      <div class="centre">
+        <a class="overlay-boutique" href="{{ path('app_login') }}">Allez à la boutique</a>
+
+      </div>
+    <p class=" centre phone my-3 bold">Veuillez vous connecter pour découvrir vos aventages clients</p>
+
+    {% endif %}
+  </section>
+
+{% endblock %}

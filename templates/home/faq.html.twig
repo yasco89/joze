@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 33px;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    h3 {
+      color: #3498db;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+
+    .faq-section {
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .fas {
+      margin-right: 13px;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}
+  FAQ - Salon J'OZE
+{% endblock %}
+
+{% block body %}
+
+  <div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1>Foire Aux Questions</h1>
+      <h2>Salon J'OZE</h2>
+    </div>
+    <hr>
+
+    <section class="faq-section">
+      <h3>
+        <i class="fas fa-question-circle mr-2"></i>Comment puis-je créer un compte?</h3>
+      <p>Allez à la page d'inscription et suivez les instructions. Une fois votre compte créé, vous pourrez réserver des hébergements ou devenir un HOST.</p>
+    </section>
+
+    <section class="faq-section">
+      <h3>
+        <i class="fas fa-user-circle mr-2"></i>Qu'est-ce qu'un HOST?</h3>
+      <p>Un HOST est un utilisateur qui propose ses biens en location sur Salon J'OZE. En devenant HOST, vous pouvez ajouter, éditer ou supprimer vos hébergements.</p>
+    </section>
+
+    <section class="faq-section">
+      <h3>
+        <i class="fas fa-building mr-2"></i>Comment ajouter mon hébergement?</h3>
+      <p>Une fois connecté en tant que HOST, rendez-vous sur votre tableau de bord et cliquez sur "Ajouter un hébergement". Remplissez les détails requis et validez.</p>
+    </section>
+
+    <section class="faq-section">
+      <h3>
+        <i class="fas fa-money-check-alt mr-2"></i>Comment sont fixés les prix?</h3>
+      <p>Les HOSTS sont libres de fixer leurs propres tarifs pour leurs hébergements. Salon J'OZE n'intervient pas dans la tarification.</p>
+    </section>
+
+    <section class="faq-section">
+      <h3>
+        <i class="fas fa-lock mr-2"></i>Mes données sont-elles sécurisées?</h3>
+      <p>Oui, Salon J'OZE prend la confidentialité très au sérieux. Vos données sont sécurisées et ne seront jamais partagées avec des tiers sans votre consentement.</p>
+    </section>
+
+    <footer class="mt-5">
+      <p class="text-muted text-center">Si vous avez d'autres questions, n'hésitez pas à
+        <a href="mailto:contact-joze@gmail.com">
+          <i class="fas fa-envelope mr-2"></i>
+          nous contacter</a>.</p>
+    </footer>
+  </div>
+
+{% endblock %}

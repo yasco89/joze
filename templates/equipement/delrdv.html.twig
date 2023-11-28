@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression rendezvous
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww centre">
+      <div class="col">
+        <div class=" caseparam card mb-4">
+          <div class="card-body">
+            <h5 class="card-title Capitalize centre ">rdv n° :
+              {{ rdv.id }}</h5>
+              <br>
+
+            <div class="roww align-items-start">
+
+              <div class="col">
+                <form class="row g-3">
+
+                  {% if rdv.date is defined %}
+                    {# Afficher la date formatée #}
+                    <h5 class="c-blue font20">Date :
+                      {{ rdv.date|date("d-m-Y") }}</h5>
+                  {% else %}
+                    <p class="card-text">
+                      <small class="text-muted">Date non définie</small>
+                    </p>
+                  {% endif %}
+
+                  <p class="card-text c-black capitalize">Catégorie:
+                    <span class="c-blue font20">{{ rdv.famille }}</span></p>
+
+                  <p class="card-text c-black capitalize">Prestation: :
+                    <span class="c-blue font20">{{ rdv.type }}</span></p>
+
+                  {# Vérifier si l'heure de début est définie #}
+                  {% if rdv.heureDebut is defined %}
+                    {# Afficher l'heure de début formatée #}
+                    <p class="card-text c-black Capitalize ">
+                      Créneau :
+                      <small class=" centre btn btn-primary">
+                        {{ rdv.heureDebut|date("H:i") }}
+                        H /
+                        {{ rdv.heureFin|date("H:i") }}
+                        H
+                      </small>
+                    </p>
+
+                  {% else %}
+                    <p class="card-text">
+                      <small class="text-muted">Heure de début non définie</small>
+                    </p>
+                  {% endif %}
+
+                  <button type="submit" class="btn btn-warning centre Capitalize" name="submit">
+                    Supprimer rendez vous n°
+                    {{ rdv.id }}
+                  </button>
+                  <p class=" centre card-text c-black capitalize">Attention cette action est definitif
+                  
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

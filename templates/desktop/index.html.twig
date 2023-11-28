@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matériel de Desktop:{% endblock %}
+
+{% block body %}
+  <header class="top">
+    <p class="top-1">Matériel disponible dans la rubrique
+      <strong class=" noir-resp noir">Desktop</strong>
+    </p>
+  </header>
+
+  <div class="info-page">
+    <div class="title">
+      <h1 class="title-product">Matériel Desktop</h1>
+
+
+    </div>
+    <img src="../images/desktop/desktop.png" class="img-fluid" alt="...">
+
+  </div>
+  <section class="Hub">
+    <div class="container">
+      <h1>Usb</h1>
+      <div class="product card-group ">
+        <div class="card">
+          <img src="../images/desktop/usb1.png" class=" prodimg card-img-top" alt="image de switch 1">
+          <div class="card-body">
+            <h5 class="card-title">Sandisk</h5>
+            <p class="card-text">
+              <p>Caractéristique :</p>
+              <ul class="liste">
+                <li>Capacité : 16 GB</li>
+                <li>Compatibilité : WINDOWS/Mac</li>
+
+              </ul>
+
+            </p>
+          </div>
+          <div class="foot-prod card-footer">
+            <small class="dispo">Disponible à la réservation</small>
+                  <button type="button" class="btn btn-success reservprod"><a  href="#">Réserver</a></button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}

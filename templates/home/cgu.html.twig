@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Add your stylesheets here if any #}
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 33px;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    h3 {
+      color: #3498db;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    h3 i {
+      margin-right: 10px;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+
+    .conf-section {
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}
+  Politique de Confidentialité
+{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <div class="text-center mb-4">
+      <h1>Politique de Confidentialité</h1>
+      <h2>Salon J'OZE</h2>
+    </div>
+    <hr>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-info-circle mr-2"></i>Préambule :</h3>
+      <p>Cette politique décrit comment Salon J'OZE traite les données personnelles de ses utilisateurs.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-user-circle mr-2"></i>Collecte des données :</h3>
+      <p>En utilisant Salon J'OZE, des données peuvent être collectées comme votre nom, email, adresse, etc.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-lock mr-2"></i>Protection des données :</h3>
+      <p>Salon J'OZE s'engage à mettre en place tous les moyens nécessaires pour garantir la sécurité et la confidentialité des données.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-exchange-alt mr-2"></i>Utilisation des données :</h3>
+      <p>Vos données sont utilisées principalement pour la réservation d'hébergements, mais aussi pour des analyses et améliorations du service.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-external-link-alt mr-2"></i>Partage des données :</h3>
+      <p>Salon J'OZE ne vendra, louera, ou échangera jamais vos informations à des tiers sans votre consentement.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-pencil-ruler mr-2"></i>Droits des utilisateurs :</h3>
+      <p>Vous avez le droit d'accéder, modifier, et supprimer vos données à tout moment.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-redo mr-2"></i>Modification de cette politique :</h3>
+      <p>Salon J'OZE peut modifier cette politique à tout moment, et vous serez informé en cas de changement.</p>
+    </section>
+
+    <footer class="mt-5">
+      <p class="text-muted text-center">Date de dernière mise à jour : 22/11/2023</p>
+    </footer>
+  </div>
+{% endblock %}

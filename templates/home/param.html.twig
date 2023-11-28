@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block title %}
+  Surface Administrateur
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww">
+      <div class="col-md-6">
+        {% if is_granted('ROLE_ADMIN') %}
+          <div class="caseparam card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Paramètres utilisateur</h5>
+              <hr>
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a class="btn-parametre" href="{{ path('app_register') }}">
+                    <i class="emoticone fa-solid fa-face-grin" style="color: #ffffff;"></i>Ajouter un membre</a>
+                </div>
+              </div>
+              <hr>
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a class="btn-parametre" href="{{ path('listusers') }}">
+                    <i class="emoticone fa-solid fa-address-book" style="color: #ffffff;"></i>Liste des utilisateurs</a>
+                </div>
+              </div>
+              <h5 class="card-title">Télécharger fichier</h5>
+              <hr>
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+
+                  <a class="btn-parametre" href="http://127.0.0.1:8000/download/reservationsjs">
+                    <i class="emoticone fa-solid fa-download" style="color: #ffffff;"></i>Liste JSS réservation</a>
+                  <a class="btn-parametre" href="http://127.0.0.1:8000/download/habitats">
+                    <i class="emoticone fa-solid fa-download" style="color: #ffffff;"></i>Liste JSS produits</a>
+
+                  <a class="btn-parametre" href="http://127.0.0.1:8000/download/reservations">
+                    <i class="emoticone fa-solid fa-download" style="color: #ffffff;"></i>Liste PDF réservation</a>
+
+                  <a class="btn-parametre" href="http://127.0.0.1:8000/download/habitatspdf">
+                    <i class="emoticone fa-solid fa-download" style="color: #ffffff;"></i>Liste PDF produits</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-md-6">
+        {% if is_granted('ROLE_ADMIN')or is_granted('ROLE_HOST') %}
+          <div class="caseparam card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Paramètres Générale</h5>
+              <hr>
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a class="btn-parametre" href="{{ path('RENDEZVOUS') }}">
+                    <i class=" emoticone fa-regular fa-square-plus" style="color: #ffffff;"></i>Ajouter un rendez-vous</a>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+
+                  <a class="btn-parametre" href="{{ path('view_rdv') }}">
+                    <i class=" emoticone fa-solid fa-calendar-days" style="color: #ffffff;"></i>Calendrier réservation</a>
+
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a class="btn-parametre" href="{{ path('equipement') }}">
+                    <i class=" emoticone fa-regular fa-square-plus" style="color: #ffffff;"></i>Ajouter un produit</a>
+
+                  <a class="btn-parametre" href="{{ path('liste') }}">
+                    <i class=" emoticone fa-solid fa-list-ol" style="color: #ffffff;"></i>Liste complète des produits</a>
+                  <a class="btn-parametre" href="{{ path('listereservation') }}">
+                    <i class=" emoticone fa-solid fa-list-ol" style="color: #ffffff;"></i>Liste réservation des produits</a>
+
+                </div>
+              </div>
+
+              <h5 class="card-title">Actualités
+              </h5>
+              <hr>
+              <div class="col-12">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <a class="btn-parametre" href="{{ path('actu') }}">
+                    <i class=" emoticone fa-regular fa-square-plus" style="color: #ffffff;"></i>
+                    Ajouter Actualités</a>
+                </div>
+              </div>
+              <br>
+              <br>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

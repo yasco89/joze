@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {# Inclure le CSS ici si vous l'avez dans une feuille de style séparée #}
+{% endblock %}
+
+{% block body %}
+
+<div class="body-container">
+
+    <div class="form-container">
+      <h1>Modifier le rôle pour {{ user.username }}</h1>
+
+      <div class="user-info">
+          <p>Email: {{ user.email }}</p>
+          <p>Nom: {{ user.name }}</p>
+          <p>Rôles actuels: {{ user.roles|join(', ') }}</p>
+      </div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit" class="submit-button">Modifier</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+
+{% endblock %}

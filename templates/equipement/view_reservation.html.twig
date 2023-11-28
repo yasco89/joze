@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la réservation{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4">Détails de la réservation</h1>
+
+    <table class="table table-striped ">
+        <tbody>
+                    <tr>
+                <th class="c-black Capitalize" scope="row">Réference du produit n° : </th>
+                <td class="c-black Capitalize ">{{ reservation.habitat.id }}</td>
+            </tr>
+            <tr>
+                <th class="c-black Capitalize" scope="row">Nom du produit :</th>
+                <td class="c-black Capitalize ">{{ reservation.habitat.name }}</td>
+            </tr>
+            <tr>
+                <th class="c-black Capitalize" scope="row">Description :</th>
+                <td class="c-black Capitalize ">{{ reservation.habitat.description }}</td>
+            </tr>
+
+            <!-- Ajoutez d'autres attributs de l'habitat de la même manière -->
+
+            <tr>
+                <th class="c-black Capitalize" scope="row">Nom :</th>
+                <td class="c-black Capitalize ">{{ reservation.name }}</td>
+            </tr>
+            <tr>
+                <th class="c-black Capitalize" scope="row">Prénom :</th>
+                <td class="c-black Capitalize ">{{ reservation.prenom }}</td>
+            </tr>
+            <tr>
+                <th class="c-black Capitalize" scope="row">Email :</th>
+                <td class="c-black">{{ reservation.email }}</td>
+            </tr>
+            <tr>
+                <th class="c-black Capitalize" scope="row">Téléphone :</th>
+                <td class="c-black">+33 {{ reservation.tel }}</td>
+            </tr>
+            <tr>
+
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary mb-3" href="{{ path('listereservation') }}">Retour à la liste des réservations</a>
+</div>
+{% endblock %}

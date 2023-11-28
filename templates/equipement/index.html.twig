@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Ajout d'un produit
+{% endblock %}
+
+{% block body %}
+  
+
+  <div class="contenu_product">
+
+    <div class="roww">
+      <div class="col-md-6">
+        <div class=" caseparam card h-100">
+          <div class="card-body">
+            <!-- Image ajout de produit -->
+            <div class="col-12">
+              <img class="img-fluid" src="../images/ajout.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class=" caseparam card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Parametres produits</h5>
+            <hr>
+
+            <div class="col-12">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="button" class="btn-parametre" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="fa-regular fa-square-plus" style="color: #ffffff;"></i>
+                  Ajouter un produit
+                </button>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="col-12">
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <a class="btn-parametre" href="{{ path('liste') }}">
+                  <i class=" emoticone fa-solid fa-list-ol" style="color: #ffffff;"></i>Liste complète du stock</a>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ======================== -->
+
+  <form enctype="multipart/form-data" method="post" action="#">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Ajouter un Produit :</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="name">Nom:</label>
+              <input type="text" class="form-control" id="name" name="name" required="required">
+            </div>
+
+            <div class="name">
+              <label for="images" class="form-label">Affiche</label>
+              <input type="file" id="images" name="images" class="form-control" accept="image/png, image/jpeg">
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="name">Description:</label>
+            <input type="text" class="form-control" id="name" name="description" required="required">
+          </div>
+
+          <div class="form-group">
+            <label for="quantite">Quantite produits disponible:</label>
+            <input type="number" class="form-control" id="quantite" name="quantite" required="required">
+          </div>
+
+          <div class="form-group">
+            <label for="stock">Prix:</label>
+            <input type="number" class="form-control" id="stock" name="prix">
+          </div>
+
+          <div class="name w-50 p-3">
+            <label for="famille" class="form-label">Prestation:</label>
+            <select class="form-control" id="famille" name="famille">
+              <option value="0" selected="selected" disabled="disabled">Prestation:</option>
+              {% for p, c in famille %}
+                <option value="{{ p }}">{{ c }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+
+          <div class="name w-50 p-3">
+            <label for="type" class="form-label">Type de produit:</label>
+            <select class="form-control" id="type" name="type">
+              <option value="0" selected="selected" disabled="disabled">Choisir le type de produit:</option>
+              {% for p, c in type %}
+                <option value="{{ p }}">{{ c }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+
+
+          <div class="button">
+            <button type="submit" class="btn btn-primary my-3 centre">Enregistrer dans le stock</button>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <a href="{{ path('home') }}" class="btn btn-primary">Page d'Accueil</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script src="../js/script.js"></script>
+{% endblock %}

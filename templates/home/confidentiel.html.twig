@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Add your stylesheets here if any #}
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 33px;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    h3 {
+      color: #3498db;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      margin-top: 20px;
+    }
+
+    .conf-section {
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .fas {
+      margin-right: 13px;
+    }
+
+    p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+{% endblock %}
+
+{% block title %}
+  Politique de confidentialité
+{% endblock %}
+
+{% block body %}
+  <div class="container mt-5">
+    <div class="text-center mb-5">
+      <h1>Politique de confidentialité</h1>
+      <h2>Salon J'OZE</h2>
+    </div>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-user-shield mr-2"></i>Collecte des informations</h3>
+      <p>Nous collectons des informations lorsque vous vous inscrivez sur notre site, lorsque vous vous connectez à votre compte, faites une réservation, et/ou lorsque vous vous déconnectez. Les informations collectées incluent votre nom, votre adresse e-mail, numéro de téléphone, et/ou carte de crédit.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-lock mr-2"></i>Utilisation des informations</h3>
+      <p>Toute l'information que nous recueillons auprès de vous peut être utilisée pour personnaliser votre expérience et répondre à vos besoins individuels, améliorer notre site Web, améliorer le service client et répondre à vos besoins de manière individuelle, traiter les transactions, administrer un concours, une promotion, ou une enquête.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-cookie mr-2"></i>Cookies</h3>
+      <p>Nous utilisons des cookies pour comprendre et sauvegarder vos préférences pour de futures visites et compiler des données agrégées sur le trafic du site et les interactions du site afin d'offrir de meilleures expériences et outils à l'avenir.</p>
+    </section>
+
+    <section class="conf-section">
+      <h3><i class="fas fa-external-link-alt mr-2"></i>Divulgation à des tiers</h3>
+      <p>Nous ne vendons, n'échangeons et ne transférons pas vos informations personnelles identifiables à des tiers. Cela ne comprend pas les tierces parties de confiance qui nous aident à exploiter notre site Web ou à mener nos affaires, tant que ces parties conviennent de garder ces informations confidentielles.</p>
+    </section>
+
+    <footer class="mt-5">
+      <p class="text-muted text-center">Date de dernière mise à jour : 22/11/2023</p>
+    </footer>
+  </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression
+{% endblock %}
+
+{% block body %}
+
+  <div class="container card">
+    <h1>Formulaire de reservation :</h1>
+    <div class="reservproduct">
+
+
+      <div class="container">
+
+        <div class=" mb-3 my-3" >
+          <div class="row g-0">
+            <div class="col-md-4">
+
+
+            </div>
+            <div class="col-md-6">
+              <p class="c-black Capitalize">Nom du produit : <span class="c-red font20">{{ usbs.nom }}</span></p>
+            </div>
+            <div class="col-md-6">
+              <p class="c-black Capitalize">Stockage : <span class="c-red text-uppercase font20">{{ usbs.stockage }} GB</span></p>
+            </div>
+            <div class="col-12">
+              <p class="c-black Capitalize">Famille : <span class="c-red font20">{{ usbs.famille }}</span></p>
+            </div>
+            <div class="col-12">
+              <p class="c-black Capitalize">Catégorie du produit : <span class="c-red font20">{{ usbs.categorie }}</span></p>
+            </div>
+            <div class="col-md-6">
+              <p class="c-black Capitalize">Quantité : <span class="c-red font20" id="quantite">{{ usbs.quantite }} pieces</span></p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-center c-black">Identifiant : N°{{ usbs.id }}</p>
+            </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+          {% if app.user and is_granted('ROLE_ADMIN')  %}
+                    <div class="centre my-3">
+
+                      <a class="btn btn-primary btn-sm" href="{{path('liste')}}">Liste complete du stock</a>
+                    </div>
+                  {% else %}
+                  <a href="{{ path('home') }}" class="btn btn-primary btn-sm">Acceuil</a>
+                      {% endif %}
+
+      <div class="col">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="prenom" class="form-label">Prenom*</label>
+            <input type="text" class="form-control" required="required" id="prenom" name="prenom">
+          </div>
+          <div class="col-md-6">
+            <label for="nom" class="form-label">Nom*</label>
+            <input type="text" class="form-control" required="required" id="nom" name="nom">
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label">Email*</label>
+            <input type="email" class="form-control" required="required" id="email" name="mail" placeholder="monemail@gmail.com">
+          </div>
+          <div class="col-12">
+            <label for="telephone" class="form-label">Telephone*</label>
+            <input type="number" class="form-control" required="required" id="telephone" name="tel" placeholder="+33 6 00 00 00 00">
+          </div>
+          <div class="col-md-6">
+            <label for="Date" class="form-label">Date début*</label>
+            <input type="date" class="form-control" required="required" id="Date" min="2023-01-03" max="2099-12-31">
+          </div>
+          <div class="col-md-6">
+            <label for="Date" class="form-label">Date de retour*</label>
+            <input type="date" class="form-control" required="required" id="Date" min="2023-01-03" max="2099-12-31">
+          </div>
+
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                j'accepte les conditions générale *</label>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Reservé</button>
+          </div>
+          <div class="col-12">
+            <p class="text-center">Tout contenu publié et mis à disposition sur ce site est la propriété de infinitytelecom et de ses créateurs. Cela comprend, mais n’est pas limité aux images, textes, logos, documents, fichiers téléchargeables et tout ce qui
+              contribue à la composition de ce site.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

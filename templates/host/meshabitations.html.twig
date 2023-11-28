@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil:{% endblock %}
+
+{% block body %}
+
+  <!-- // presentation des équipements -->
+
+  <section class="container">
+    <div class="row">
+      <input class="form-control" id="searchInput" type="text" placeholder="Recherche..." onkeyup="productsearch()">
+    </div>
+
+    <div class="row" id="productsContainer">
+      {% for produits in produit %}
+        <div class="col-md-4">
+          <div class="card-group">
+            <div class="product card">
+              <img src="{{ asset(produits.images) }}" class="card-img-top">
+
+              <div class="card-body" style="min-height: 150px;">
+                <h5 class="card-title" id="product">Nom de l'habitat :
+                  {{ produits.name|slice(0,50) }}</h5>
+                <p class="card-title" data-search="{{ produits.famille|slice(0,50) }}">Catégorie du produit :
+                  {{ produits.famille|slice(0,50) }}</p>
+
+              </div>
+              <div class="card-footer">
+                {% if produits.quantite > 0 %}
+                  <small class="text-body-secondary">Quantité :
+                    {{ produits.quantite }}</small>
+                  <small class="text-body-secondary">Disponible</small>
+
+                  <button type="button" name="button" class="price">Prix: {{ produits.prix }} €</button>
+                  <div class="">
+
+                    <a href="{{ path('view_produit', {id:  produits.id}) }}" class="btn btn-success btn-sm">Réserver</a>
+                    {% if app.user and is_granted('ROLE_ADMIN') %}
+                      <a href="{{ path('delete_produit', {id:  produits.id}) }}" class="btn btn-warning btn-sm">Suppression</a>
+                    {% endif %}
+                  </div>
+                {% else %}
+                  <p class="text-body-secondary">Prochainement</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if loop.index % 3 == 0 %}
+        </div>
+        <div class="row">
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <script type="text/javascript" src="js/search.js"></script>
+
+{% endblock %}

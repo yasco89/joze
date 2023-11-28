@@ -1,0 +1,192 @@
+body {
+  background: white;
+}
+
+label{
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+
+.c-black{
+  color: black;
+}
+
+.c-blue{
+  color: blue;
+}
+
+.Capitalize {
+  text-transform: capitalize;
+}
+
+.centre {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  margin-bottom: 13px;
+}
+
+.logo {
+  top: 20%;
+  position: absolute;
+  left: 16%;
+  width: 25%;
+}
+
+
+
+/* page d'inscription */
+.inscription {
+  width: 33%;
+  color: white;
+  position: relative;
+  margin-top: 3%;
+  left: 24%;
+}
+
+.connexion {
+  margin-top: 15%;
+  margin-left: 10%;
+}
+
+.btn-inscr {
+  background: #79dc53;
+  color: white;
+  font-size: 18px;
+}
+
+.btn-inscr:hover {
+  background:#00bf60;
+  color: white;
+  font-size: 20px;
+}
+
+
+.btn-acceuil{
+  margin-top: 14%;
+  width: 33%;
+  background: #0dcaf0;
+  color: white;
+  font-size: 18px;
+
+}
+.btn-acceuil:hover {
+  background:blue;
+  color: white;
+  font-size: 20px;
+}
+.btn-home {
+  margin-top: 5%;
+  width: 33%;
+  background: blue;
+  color: white;
+  font-size: 18px;
+}
+
+.btn-home:hover {
+  background:#4ea0dc;
+  color: white;
+  font-size: 20px;
+}
+
+.fa-solid {
+  margin-bottom: 3px;
+  margin-right: 9px;
+}
+
+input {
+  margin: 3px;
+}
+@media (max-width:2560px) {
+  .logo {
+      position: absolute;
+      left: 13%;
+      width: 28%;
+  }
+}
+
+@media (max-width: 1440px) {
+  .logo {
+    width: 46%;
+    position: absolute;
+    margin-left: 7%;
+    margin-top: 8%;
+  }
+}
+
+@media (max-width: 793px) {
+  .logo {
+    width: 50%;
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 20%;
+  }
+}
+
+@media (max-width: 824px) {
+  .logo {
+    width: 46%;
+    position: absolute;
+    margin-left: 8%;
+    margin-top: 10%;
+  }
+
+  .logo {
+    width: 50%;
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 20%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    width: 46%;
+    position: absolute;
+    margin-left: 8%;
+    margin-top: 10%;
+  }
+}
+
+@media (max-width:425px) {
+
+
+  .carousel-cadeaux {
+    width: 99% !important;
+  }
+
+  .socials {
+    display: none;
+  }
+
+  /* footer */
+  .foot {
+    /* a modifier pour avoir un bon visu maquette */
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  /* Page d'inscription  */
+  .logo {
+    top: 3%;
+    width: 60%;
+    position: absolute;
+    margin-top: 1% !important;
+  }
+
+  .inscription {
+    width: 98%;
+    color: white;
+    position: relative;
+    margin-top: 58%;
+    left: 0%;
+    }
+
+  .connexion {
+    margin-left: 1px;
+  }
+}

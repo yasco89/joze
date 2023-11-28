@@ -1,0 +1,175 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Réservation hébergement
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww">
+      <div class="col-md-6">
+        <div class=" caseparam card mb-4 shadow-lg h-100">
+          <div class="card-body">
+            <h5 class="card-title Capitalize">Réference n° :
+              {{ produits.id }}</h5>
+
+            <!-- Galerie dans une card -->
+            <div class="card mb-4">
+              <div class="row no-gutters">
+                <div class="col-lg-8 centre">
+                  <img src="{{ asset(produits.getImages) }}" class="img-fluid  " alt="Image principale">
+                </div>
+              </div>
+            </div>
+
+            <hr>
+            <div class="roww align-items-start">
+              <div class="col">
+                <p class="card-text c-black Capitalize">
+                  <i class="fa-solid fa-bag-shopping" style="color: #000000;"></i>
+                  nom Produits :
+                  <span class=" font20">{{ produits.name}}</span></p>
+                <p class="card-text c-black Capitalize">
+                  <i class="fa-solid fa-users" style="color: #000000;"></i>
+                  Catégorie produits :
+                  <span class=" font20">{{ produits.famille }}</span></p>
+
+                <p class="card-text c-black Capitalize">
+                  <i class="fa-solid fa-barcode" style="color: #000000;"></i>
+                  Type de produits :
+                  <span class=" font20" id="repondeur">{{ produits.type  }}
+                  </span>
+
+                </p>
+
+                <p class="card-text c-black Capitalize">
+                  <i class="fa-solid fa-cart-plus" style="color: #000000;"></i>
+                  quantités disponibles
+                  {% if produits.quantite > 0 %}
+                    <span class=" font20" id="quantite">{{ produits.quantite }}
+                    </span>
+                  {% else %}
+                    <span class=" font20">Prochainement</span>
+                  {% endif %}
+                </p>
+
+                <p class="card-text c-black Capitalize">
+                  <i class="fa-solid fa-tags" style="color: #000000;"></i>
+                  Prix :
+                  <span class=" font20">{{ produits.prix }}
+                    €</span></p>
+
+              </div>
+
+            </div>
+
+            <hr>
+
+          </div>
+
+          {% if app.user and is_granted('ROLE_ADMIN') %}
+            <div class="text-center my-3">
+              <a class="btn btn-primary btn-sm" href="{{ path('liste') }}">Liste complète du stock</a>
+            </div>
+          {% else %}
+            <div class="text-center my-3">
+              <a href="{{ path('home') }}" class="btn btn-primary btn-sm">Retourner à la page d'accueil</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-md-6 ">
+        <div class="caseparam card h-100  shadow-lg ">
+          {% if app.user %}
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fa-solid fa-clipboard-user" style="color: #000000;"></i>Informations emprunteur</h5>
+              <hr>
+              <form class="row g-3" method="post">
+                <div class="mb-3">
+                  <label for="nproduit" class="form-label">Produit à reserver :</label>
+                  <input class="form-control text-uppercase bold text-success" type="text" id="nproduit" name="nproduit" value="{{ produits.name  }}">
+                </div>
+
+                {% if users %}
+
+                  <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom :</label>
+                    <input class="form-control text-uppercase bold text-success" type="text" name="prenom" value="{{ app.user.username }}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input class="form-control text-uppercase bold text-success" type="text" name="name" value="{{ app.user.name }}">
+
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email :</label>
+                    <input class="form-control text-uppercase bold text-success" type="email" name="email" value="{{ app.user.email }}">
+
+                  </div>
+
+                {% else %}
+                  <p>Aucun utilisateur trouvé.</p>
+                {% endif %}
+
+                <div class="mb-3">
+                  <label for="telephone" class="form-label">Téléphone*</label>
+                  <input type="tel" class="form-control" required="required" id="telephone" name="tel" placeholder="+33 6 00 00 00 00" pattern="[0-9]{1,10}" maxlength="10">
+                  <div class="invalid-feedback">
+                    Veuillez entrer un numéro de téléphone valide (10 chiffres maximum).
+                  </div>
+                </div>
+
+                <hr>
+
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required="required">
+                    <label class="form-check-label" for="gridCheck">
+                      J'accepte les conditions générales *
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-success" id="reserverBtn">Procéder à la réservation</button>
+              </form>
+
+            </div>
+          {% else %}
+            <div class="card-body">
+              <h5 class="card-title">Effectuer une Réservation</h5>
+              <hr>
+              <div class="mb-3">
+                <p class="text-center">
+                  Pour accéder à la réservation de nos produits, veuillez vous connecter. Cliquez sur le bouton ci-dessous pour accéder à votre compte et effectuer votre réservation en toute simplicité.
+                </p>
+                <div class="text-center">
+                  <a class="btn btn-primary" href="{{ path('app_login') }}">
+                    <i class="fa-solid fa-face-grin" style="color: #ffffff;"></i>
+                    Se Connecter et Réserver
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <script type="text/javascript" src="js/apicalendar.js"></script>
+
+{% endblock %}

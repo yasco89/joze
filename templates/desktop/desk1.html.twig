@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block title %}Réservation{% endblock %}
+
+{% block body %}
+  <header class="info-page">
+
+    <div class="title">
+      <h1 class="title-product">Matériel desktop</h1>
+
+
+    </div>
+        <img src="../images/desktop/desktop.png" class="img-fluid" alt="...">
+  </header>
+
+  <div class="container card">
+    <h1>Formulaire de reservation :</h1>
+    <div class="reservproduct">
+
+      <div class="col">
+
+        <img src="../images/desktop/usb1.png" class="resimg" alt="usb2.png">
+        <div class="card-body">
+          <h5 class="card-title">Sandisk</h5>
+          <p class="card-text">
+            <p>Caractéristique :</p>
+            <ul class="liste">
+              <li>Capacité : 16 GB</li>
+              <li>Compatibilité : WINDOWS/Mac</li>
+
+            </ul>
+
+          </p>
+        </div>
+        <small class="dispo">Disponible à la réservation</small>
+
+      </div>
+      <div class="col">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="prenom" class="form-label">Prenom*</label>
+            <input type="text" class="form-control" required="required" id="prenom" name="prenom">
+          </div>
+          <div class="col-md-6">
+            <label for="nom" class="form-label">Nom*</label>
+            <input type="text" class="form-control" required="required" id="nom" name="nom">
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label">Email*</label>
+            <input type="email" class="form-control" required="required" id="email" name="mail" placeholder="monemail@gmail.com">
+          </div>
+          <div class="col-12">
+            <label for="telephone" class="form-label">Telephone*</label>
+            <input type="number" class="form-control" required="required" id="telephone" name="tel" placeholder="+33 6 00 00 00 00">
+          </div>
+          <div class="col-md-6">
+            <label for="Date" class="form-label">Date début*</label>
+            <input type="date" class="form-control" required="required" id="Date" min="2023-01-03" max="2099-12-31">
+          </div>
+          <div class="col-md-6">
+            <label for="Date" class="form-label">Date de retour*</label>
+            <input type="date" class="form-control" required="required" id="Date" min="2023-01-03" max="2099-12-31">
+          </div>
+
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck">
+              <label class="form-check-label" for="gridCheck">
+                j'accepte les conditions générale *</label>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-success">Reservé</button>
+          </div>
+          <div class="col-12">
+            <p class="text-center">Tout contenu publié et mis à disposition sur ce site est la propriété de infinitytelecom et de ses créateurs. Cela comprend, mais n’est pas limité aux images, textes, logos, documents, fichiers téléchargeables et tout ce qui
+              contribue à la composition de ce site.
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

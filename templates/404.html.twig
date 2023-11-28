@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block title %}Page non trouvée{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="../images/404.jpg" class="img-fluid" alt="Image introuvable">
+            <h1 class="mt-4">Erreur 404 - Page non trouvée</h1>
+            <p class="mb-4">Désolé, la page que vous recherchez n'a pas été trouvée.</p>
+            <p><a href="{{ path('home') }}" class="btn btn-primary">Retour à la page d'accueil</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

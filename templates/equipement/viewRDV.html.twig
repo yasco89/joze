@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Réservation hébergement
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww">
+      <div class="col-md-6">
+        <div class=" caseparam card mb-4 shadow-lg h-100">
+          <div class="card-body">
+            <h5 class="card-title">Réference produit n° :
+              {{ rendezvouss.id }}</h5>
+
+            <hr>
+            <div class="roww align-items-start">
+              <div class="col">
+
+                <p class="card-text c-black capitalize">
+
+                Prestation du rendez vouss :
+                  <span class=" font20">{{ rendezvouss.famille }}</span></p>
+
+                <p class="card-text c-black capitalize">
+
+                  Nombre de rendez vouss :
+                  {% if rendezvouss.quantite > 0 %}
+                    <span class=" font20" id="quantite">{{ rendezvouss.quantite }}
+                      RDV Disponibles</span>
+                  {% else %}
+                    <span class=" font20">Prochainement</span>
+                  {% endif %}
+                </p>
+
+                <p class="card-text c-black capitalize">
+
+                  Type de rendezvouss :
+                  <span class=" font20" id="repondeur">{{ rendezvouss.type  }}
+                  </span>
+
+              </p>
+              </div>
+            </div>
+            <hr>
+          </div>
+
+          {% if app.user and is_granted('ROLE_ADMIN') %}
+            <div class="text-center my-3">
+              <a class="btn btn-primary btn-sm" href="{{ path('liste') }}">Liste complète du stock</a>
+            </div>
+          {% else %}
+            <div class="text-center my-3">
+              <a href="{{ path('home') }}" class="btn btn-primary btn-sm">Retourner à la page d'accueil</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-md-6 ">
+        <div class="caseparam card h-100  shadow-lg ">
+          {% if app.user %}
+
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fa-solid fa-clipboard-user" style="color: #000000;"></i>Informations emprunteur</h5>
+              <hr>
+              <form class="row g-3" method="post">
+
+                <div class="mb-3" style="display: none;">
+    <label for="prenom" class="form-label">Reference rdv :</label>
+    <input class="form-control text-uppercase bold text-success" type="number" name="rdv" value="{{ rendezvouss.id }}">
+</div>
+
+
+                {% if users %}
+
+                  <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom :</label>
+                    <input class="form-control text-uppercase bold text-success" type="text" name="username" value="{{ app.user.username }}">
+                  </div>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Nom :</label>
+                    <input class="form-control text-uppercase bold text-success" type="text" name="name" value="{{ app.user.name }}">
+
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email :</label>
+                    <input class="form-control text-uppercase bold text-success" type="email" name="email" value="{{ app.user.email }}">
+
+                  </div>
+
+                {% else %}
+                  <p>Aucun utilisateur trouvé.</p>
+                {% endif %}
+
+                <div class="mb-3">
+                  <label for="telephone" class="form-label">Téléphone*</label>
+                  <input type="tel" class="form-control" required="required" id="telephone" name="tel" placeholder="+33 6 00 00 00 00" pattern="[0-9]{1,10}" maxlength="10">
+                  <div class="invalid-feedback">
+                    Veuillez entrer un numéro de téléphone valide (10 chiffres maximum).
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="lieu" class="form-label">Prestation</label>
+                  <select class="form-control" id="lieu" name="lieu">
+                    <option value="0" selected="selected" disabled="disabled">Prestation</option>
+                    {% for p, c in lieu %}
+                      <option value="{{ p }}">{{ c }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="adresse" class="form-label">Adresse :</label>
+                  <input class="form-control text-uppercase bold text-success" type="text" name="adresse">
+
+                  <div class=" centre alert-info" >
+                    Si vous avez décidé de prendre le service à domicile, veuillez compléter l'adresse.
+                  </div>
+                </div>
+            <hr>
+
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" required="required">
+                    <label class="form-check-label" for="gridCheck">
+                      J'accepte les conditions générales *
+                    </label>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-success" id="reserverBtn">Procéder à la réservation</button>
+              </form>
+
+            </div>
+          {% else %}
+            <div class="card-body">
+              <h5 class="card-title">Effectuer une Réservation</h5>
+              <hr>
+              <div class="mb-3">
+                <p class="text-center">
+                  Pour accéder à la réservation de nos produits, veuillez vous connecter. Cliquez sur le bouton ci-dessous pour accéder à votre compte et effectuer votre réservation en toute simplicité.
+                </p>
+                <div class="text-center">
+                  <a class="btn btn-primary" href="{{ path('app_login') }}">
+                    <i class="fa-solid fa-face-grin" style="color: #ffffff;"></i>
+                    Se Connecter et Réserver
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="https://apis.google.com/js/api.js"></script>
+
+  <script type="text/javascript" src="js/apicalendar.js"></script>
+
+{% endblock %}

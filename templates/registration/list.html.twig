@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos appareil Réseaux du moment{% endblock %}
+
+{% block body %}
+
+  <div class="no-resp-parametre">
+    <div class="container">
+
+      <h1>Liste des utilisateurs
+      </h1>
+
+      <div class="">
+        <!-- <div class="mb-3"> <label for="floatingInput">Recherche de produit</label> <input type="text" class="form-control me-2" id="myInput" onkeyup="myFunction()"> </div> -->
+
+      </div>
+
+      <table class="table" id="myTable">
+
+        <!-- <input type="text" class="form-control me-2" id="myInput" onkeyup="myFunction()" placeholder="Rechercher équipements"> -->
+        <input id="searchInput" type="text" onkeyup="search()" placeholder="Recherche...">
+
+        <thead>
+          <tr>
+            <th class="c-red" scope="col">Prénom</th>
+            <th class="c-black" scope="col">Nom</th>
+            <th class="c-black" scope="col">Rôles</th>
+            <th class="c-black respphone" scope="col">Email</th>
+
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for users in user %}
+            <tr>
+              <td>
+                <p class="text-uppercase bold text-success">
+                  {{ users.username|slice(0,50) }}
+                </p>
+              </td>
+
+              <td class="c-black">
+                <p class="Capitalize">
+                  {{ users.name|slice(0,50) }}
+                </p>
+              </td>
+
+              <td class="c-black">
+                      <p class="Capitalize">
+                        {{ users.roles|join(', ') }}
+                      </p>
+                      <a href="{{ path('user_edit_role', {'id': users.id}) }}">Modifier le rôle</a> <!-- Ajout de cette ligne -->
+                    </td>
+
+              <td class="c-black">
+                <p class="respphone">
+                  {{ users.email }}
+                </p>
+              </td>
+
+            </tr>
+
+          {% endfor %}
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="js/search.js"></script>
+
+{% endblock %}

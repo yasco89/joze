@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {# Ajoutez vos stylesheets ici s'il y en a #}
+{% endblock %}
+
+{% block title %}
+  Suppression
+{% endblock %}
+
+{% block body %}
+
+  <div class="contenu_product">
+
+    <div class="roww centre">
+      <div class="col-md-6">
+        <div class=" caseparam card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Supprimer l'avis numéros :
+              {{ avis.id }}</h5>
+
+            <div class="roww align-items-start">
+
+              <div class="col">
+                <form class="row g-3">
+                  <p class="card-text c-black capitalize">Nom du client :
+                    <span class="c-blue font20">{{ avis.name}}</span></p>
+
+                  <p class="card-text c-black capitalize">Descriptions de l'avis :
+                    <span class="c-blue font20">{{ avis.description }}</span></p>
+
+                    <p class="card-text c-black capitalize">Prestation de l'avis : :
+                      <span class="c-blue font20">{{ avis.prestation }}</span></p>
+
+                    <p class="card-text c-black capitalize">Note :
+                      <span class="c-blue font20">{{ avis.note }}</span></p>
+
+
+
+
+
+                    <button type="submit" class="btn btn-warning centre" name="submit">
+                      supprimer l'avis de :
+                      {{ avis.name }}
+                    </button>
+                    <p class="card-text c-black capitalize">Attention cette action supprimera définitivement l'avis n °
+                      <span class="c-blue font20" >{{ avis.id }}
+                      </span>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      {% endblock %}
